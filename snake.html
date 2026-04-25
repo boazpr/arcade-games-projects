@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Snake · Arcade Hub</title>
+<link rel="stylesheet" href="shared.css">
+<link rel="stylesheet" href="snake.css">
+</head>
+<body>
+
+<a class="back-btn" href="index.html">◀ ARCADE HUB</a>
+
+<div class="game-header">
+  <div class="game-title">SNAKE</div>
+  <div class="game-subtitle">EAT · GROW · DON'T BITE YOURSELF</div>
+</div>
+
+<div class="game-card fade-in">
+  <div class="snake-hud">
+    <div class="sn-hud-item">SCORE: <span id="sn-score">0</span></div>
+    <div class="sn-hud-item sn-hud-hi">BEST: <span id="sn-hi">0</span></div>
+    <div class="sn-speed-group">
+      <span class="sn-speed-label">SPEED:</span>
+      <button class="sn-speed-btn" onclick="setSpeed('slow',this)">SLOW</button>
+      <button class="sn-speed-btn active" onclick="setSpeed('normal',this)">NORMAL</button>
+      <button class="sn-speed-btn" onclick="setSpeed('fast',this)">FAST</button>
+    </div>
+  </div>
+
+  <div class="sn-canvas-wrap">
+    <canvas id="sn-canvas"></canvas>
+    <div class="sn-overlay" id="sn-overlay">
+      <div class="sn-ov-title" id="sn-ov-title">SNAKE</div>
+      <div class="sn-ov-score" id="sn-ov-score" style="display:none"></div>
+      <div class="sn-ov-sub" id="sn-ov-sub">EAT 🟢 FOR +10 · GRAB ⭐ FOR +50</div>
+      <button class="sn-start-btn" id="sn-start-btn" onclick="newGame()">▶ START GAME</button>
+      <div class="sn-hint">
+        ← ↑ → ↓ / W A S D — MOVE<br>
+        Snake wraps around walls<br>
+        Speed increases every 50 pts
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile D-pad -->
+  <div class="sn-dpad">
+    <button class="sn-d-btn sn-d-up"    onclick="dpad('up')">▲</button>
+    <button class="sn-d-btn sn-d-left"  onclick="dpad('left')">◀</button>
+    <button class="sn-d-btn sn-d-down"  onclick="dpad('down')">▼</button>
+    <button class="sn-d-btn sn-d-right" onclick="dpad('right')">▶</button>
+  </div>
+</div>
+
+<script src="snake.js"></script>
+</body>
+</html>

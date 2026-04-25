@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rock Paper Scissors · Arcade Hub</title>
+<link rel="stylesheet" href="shared.css">
+<link rel="stylesheet" href="rps.css">
+</head>
+<body>
+
+<a class="back-btn" href="index.html">◀ ARCADE HUB</a>
+
+<div class="game-header">
+  <div class="game-title">ROCK PAPER SCISSORS</div>
+  <div class="game-subtitle">YOU VS CPU · BEST OF FOREVER</div>
+</div>
+
+<div class="game-card fade-in" style="max-width:680px">
+  <div class="pixel-deco">✊</div>
+
+  <div class="rps-scoreboard">
+    <div class="score-block">
+      <div class="score-label">YOU</div>
+      <div class="score-num" id="score-player">0</div>
+    </div>
+    <div class="score-vs">VS</div>
+    <div class="score-block">
+      <div class="score-label">CPU</div>
+      <div class="score-num" id="score-cpu" style="color:var(--magenta);text-shadow:var(--glow-mag)">0</div>
+    </div>
+    <div class="score-vs" style="color:var(--muted);font-size:10px">|</div>
+    <div class="score-block">
+      <div class="score-label">DRAW</div>
+      <div class="score-num" id="score-draw" style="color:var(--yellow);text-shadow:var(--glow-yellow);font-size:24px;margin-top:5px">0</div>
+    </div>
+  </div>
+
+  <div class="rps-battle">
+    <div class="battle-side">
+      <div class="battle-label">YOU</div>
+      <span class="battle-emoji" id="player-display">❓</span>
+    </div>
+    <div class="battle-vs">VS</div>
+    <div class="battle-side">
+      <div class="battle-label">CPU</div>
+      <span class="battle-emoji" id="cpu-display">❓</span>
+    </div>
+  </div>
+
+  <div class="rps-result" id="rps-result">&nbsp;</div>
+
+  <div class="rps-choices">
+    <button class="rps-btn" onclick="playRPS('rock')">
+      <span class="rps-emoji">✊</span>
+      <span class="rps-name">ROCK</span>
+    </button>
+    <button class="rps-btn" onclick="playRPS('paper')">
+      <span class="rps-emoji">🖐️</span>
+      <span class="rps-name">PAPER</span>
+    </button>
+    <button class="rps-btn" onclick="playRPS('scissors')">
+      <span class="rps-emoji">✌️</span>
+      <span class="rps-name">SCISSORS</span>
+    </button>
+  </div>
+
+  <div class="rps-footer">
+    <div class="streak-box">
+      <div class="streak-num" id="streak-num">0</div>
+      <div class="streak-lbl" id="streak-label">WIN STREAK</div>
+    </div>
+    <button class="btn btn-magenta" onclick="resetRPS()">↺ RESET</button>
+  </div>
+
+  <div class="history-label">LAST 10 ROUNDS</div>
+  <div class="history-row" id="history-row"></div>
+</div>
+
+<script src="rps.js"></script>
+</body>
+</html>

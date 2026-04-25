@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&display=swap');
+
+:root {
+  --bg: #060610;
+  --surface: #0d0d24;
+  --card: #111128;
+  --border: #1e1e4a;
+  --cyan: #00f5ff;
+  --magenta: #ff00aa;
+  --yellow: #ffe600;
+  --green: #00ff88;
+  --red: #ff3355;
+  --text: #e0e0ff;
+  --muted: #6066aa;
+  --glow-cyan: 0 0 20px #00f5ff55, 0 0 40px #00f5ff22;
+  --glow-mag: 0 0 20px #ff00aa55, 0 0 40px #ff00aa22;
+  --glow-yellow: 0 0 20px #ffe60055, 0 0 40px #ffe60022;
+  --glow-green: 0 0 20px #00ff8855, 0 0 40px #00ff8822;
+  --glow-red: 0 0 20px #ff335555, 0 0 40px #ff335522;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Share Tech Mono', monospace;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* CRT scanlines */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background: repeating-linear-gradient(
+    0deg, transparent, transparent 2px,
+    rgba(0,245,255,0.012) 2px, rgba(0,245,255,0.012) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Back button */
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  padding: 10px 16px;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all .2s;
+  letter-spacing: 1px;
+  margin: 24px 0 0 24px;
+}
+.back-btn:hover {
+  border-color: var(--cyan);
+  color: var(--cyan);
+  box-shadow: var(--glow-cyan);
+}
+
+/* Game header */
+.game-header {
+  text-align: center;
+  padding: 28px 20px 16px;
+}
+.game-title {
+  font-family: 'Press Start 2P', monospace;
+  font-size: clamp(16px, 3.5vw, 30px);
+  letter-spacing: 3px;
+  animation: flicker 5s infinite;
+}
+.game-subtitle {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 3px;
+}
+@keyframes flicker {
+  0%,95%,100%{opacity:1}96%{opacity:.6}97%{opacity:1}98%{opacity:.3}99%{opacity:1}
+}
+
+/* Card wrapper */
+.game-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  max-width: 860px;
+  margin: 0 auto 60px;
+  padding: 36px 28px;
+}
+.game-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+}
+
+/* Pixel deco */
+.pixel-deco {
+  position: absolute;
+  opacity: .035;
+  pointer-events: none;
+  font-size: 130px;
+  bottom: -20px; right: -10px;
+  user-select: none;
+}
+
+/* Generic buttons */
+.btn {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  padding: 11px 20px;
+  background: transparent;
+  border: 2px solid var(--border);
+  color: var(--muted);
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: all .2s;
+}
+.btn-cyan { border-color: var(--cyan); color: var(--cyan); }
+.btn-cyan:hover { background: var(--cyan); color: var(--bg); box-shadow: var(--glow-cyan); }
+.btn-magenta { border-color: var(--magenta); color: var(--magenta); }
+.btn-magenta:hover { background: var(--magenta); color: var(--bg); box-shadow: var(--glow-mag); }
+.btn-yellow { border-color: var(--yellow); color: var(--yellow); }
+.btn-yellow:hover { background: var(--yellow); color: var(--bg); box-shadow: var(--glow-yellow); }
+.btn-green { border-color: var(--green); color: var(--green); }
+.btn-green:hover { background: var(--green); color: var(--bg); box-shadow: var(--glow-green); }
+.btn-red { border-color: var(--red); color: var(--red); }
+.btn-red:hover { background: var(--red); color: var(--bg); box-shadow: var(--glow-red); }
+
+@keyframes fadeIn {
+  from { opacity:0; transform:translateY(12px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+.fade-in { animation: fadeIn .35s ease both; }

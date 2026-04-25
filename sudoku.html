@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sudoku · Arcade Hub</title>
+<link rel="stylesheet" href="shared.css">
+<link rel="stylesheet" href="sudoku.css">
+</head>
+<body>
+
+<a class="back-btn" href="index.html">◀ ARCADE HUB</a>
+
+<div class="game-header">
+  <div class="game-title">SUDOKU</div>
+  <div class="game-subtitle">FILL THE GRID · NO REPEATS · TIMER STARTS ON FIRST MOVE</div>
+</div>
+
+<div class="game-card fade-in">
+  <div class="pixel-deco">🔢</div>
+
+  <div class="sdk-topbar">
+    <div class="diff-group">
+      <span class="diff-label">DIFF:</span>
+      <button class="diff-btn active" onclick="setDiff('easy',this)">EASY</button>
+      <button class="diff-btn" onclick="setDiff('medium',this)">MED</button>
+      <button class="diff-btn" onclick="setDiff('hard',this)">HARD</button>
+    </div>
+    <div class="sdk-timer" id="sdk-timer">00:00</div>
+  </div>
+
+  <div class="sdk-infobar">
+    <div class="info-chip">Errors: <span id="sdk-errors">0</span>/3</div>
+    <div class="info-chip">Remaining: <span id="sdk-remaining">—</span></div>
+    <div class="notes-toggle" onclick="toggleNotes()">
+      <div class="toggle-box on" id="notes-box">✓</div>
+      NOTES MODE (N)
+    </div>
+  </div>
+
+  <div class="sdk-grid-wrap">
+    <div class="sdk-grid" id="sdk-grid"></div>
+  </div>
+
+  <div class="numpad">
+    <button class="num-btn" onclick="inputNum(1)">1</button>
+    <button class="num-btn" onclick="inputNum(2)">2</button>
+    <button class="num-btn" onclick="inputNum(3)">3</button>
+    <button class="num-btn" onclick="inputNum(4)">4</button>
+    <button class="num-btn" onclick="inputNum(5)">5</button>
+    <button class="num-btn" onclick="inputNum(6)">6</button>
+    <button class="num-btn" onclick="inputNum(7)">7</button>
+    <button class="num-btn" onclick="inputNum(8)">8</button>
+    <button class="num-btn" onclick="inputNum(9)">9</button>
+    <button class="num-btn erase" onclick="inputNum(0)">DEL</button>
+  </div>
+
+  <div class="sdk-actions">
+    <button class="btn btn-green" onclick="newGame()">▶ NEW GAME</button>
+    <button class="btn btn-cyan"  onclick="getHint()">💡 HINT</button>
+    <button class="btn btn-red"   onclick="checkBoard()">✔ CHECK</button>
+  </div>
+
+  <div class="sdk-status" id="sdk-status">&nbsp;</div>
+</div>
+
+<script src="sudoku.js"></script>
+</body>
+</html>

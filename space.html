@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Space Waves · Arcade Hub</title>
+<link rel="stylesheet" href="shared.css">
+<link rel="stylesheet" href="space.css">
+</head>
+<body>
+
+<a class="back-btn" href="index.html">◀ ARCADE HUB</a>
+
+<div class="game-header">
+  <div class="game-title">SPACE WAVES</div>
+  <div class="game-subtitle">SHOOT · DODGE · SURVIVE THE INVASION</div>
+</div>
+
+<div class="game-card fade-in">
+  <div class="sw-hud">
+    <div class="hud-item">SCORE: <span id="sw-score">0</span></div>
+    <div class="hud-item hud-lives">LIVES: <span id="sw-lives">❤️❤️❤️</span></div>
+    <div class="hud-item">WAVE: <span id="sw-wave">0</span></div>
+    <div class="hud-item">HI-SCORE: <span id="sw-hi">0</span></div>
+  </div>
+
+  <div class="sw-canvas-wrap">
+    <canvas id="sw-canvas"></canvas>
+    <div class="sw-overlay" id="sw-overlay">
+      <div class="sw-ov-title" id="sw-ov-title">SPACE WAVES</div>
+      <div class="sw-ov-score" id="sw-ov-score" style="display:none"></div>
+      <div class="sw-ov-sub" id="sw-ov-sub">SURVIVE THE ALIEN INVASION</div>
+      <button class="sw-start-btn" id="sw-start-btn" onclick="startGame()">▶ START GAME</button>
+      <div class="sw-hint">
+        ← → / A D — MOVE &nbsp;|&nbsp; SPACE / ↑ — SHOOT<br>
+        Collect ❤️ for an extra life
+      </div>
+    </div>
+  </div>
+
+  <div class="sw-mobile-row">
+    <button class="sw-mob-btn"
+      ontouchstart="mobHold('left',true)" ontouchend="mobHold('left',false)"
+      onmousedown="mobHold('left',true)" onmouseup="mobHold('left',false)" onmouseleave="mobHold('left',false)">
+      ◀ LEFT
+    </button>
+    <button class="sw-mob-btn sw-mob-fire"
+      ontouchstart="shoot()" onmousedown="shoot()">
+      🔥 FIRE
+    </button>
+    <button class="sw-mob-btn"
+      ontouchstart="mobHold('right',true)" ontouchend="mobHold('right',false)"
+      onmousedown="mobHold('right',true)" onmouseup="mobHold('right',false)" onmouseleave="mobHold('right',false)">
+      RIGHT ▶
+    </button>
+  </div>
+</div>
+
+<script src="space.js"></script>
+</body>
+</html>

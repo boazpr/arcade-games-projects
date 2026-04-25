@@ -1,0 +1,153 @@
+.game-title { color: var(--magenta); text-shadow: 0 0 30px var(--magenta); }
+.game-card::before { background: linear-gradient(90deg, var(--magenta), var(--yellow), var(--cyan)); }
+
+/* Top bar */
+.sdk-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+/* Difficulty */
+.diff-group { display: flex; gap: 5px; align-items: center; }
+.diff-label { font-size: 9px; color: var(--muted); letter-spacing: 2px; margin-right: 4px; }
+.diff-btn {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px;
+  padding: 6px 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  cursor: pointer;
+  transition: all .2s;
+}
+.diff-btn.active { border-color: var(--yellow); color: var(--yellow); box-shadow: var(--glow-yellow); }
+
+/* Timer */
+.sdk-timer {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 14px;
+  color: var(--muted);
+  letter-spacing: 3px;
+  min-width: 80px;
+  text-align: right;
+}
+.sdk-timer.running { color: var(--yellow); text-shadow: var(--glow-yellow); }
+.sdk-timer.stopped { color: var(--red); }
+
+/* Info row */
+.sdk-infobar {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.info-chip { font-size: 11px; color: var(--muted); }
+.info-chip span { color: var(--yellow); font-family: 'Press Start 2P', monospace; font-size: 10px; }
+
+/* Notes toggle */
+.notes-toggle {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 10px; color: var(--muted); cursor: pointer;
+  user-select: none;
+}
+.toggle-box {
+  width: 16px; height: 16px;
+  border: 2px solid var(--muted);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; transition: all .2s;
+}
+.toggle-box.on { border-color: var(--cyan); color: var(--cyan); box-shadow: var(--glow-cyan); }
+
+/* Grid */
+.sdk-grid-wrap { display: flex; justify-content: center; margin-bottom: 20px; }
+.sdk-grid {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  border: 3px solid var(--cyan);
+  box-shadow: var(--glow-cyan);
+  width: min(100%, 460px);
+  aspect-ratio: 1;
+}
+.sdk-cell {
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid #1a1a3a;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: clamp(11px, 2.5vw, 20px);
+  cursor: pointer;
+  transition: background .1s, color .1s;
+  color: var(--text);
+  background: var(--surface);
+  user-select: none;
+  aspect-ratio: 1;
+  position: relative;
+}
+/* 3x3 box borders */
+.sdk-cell:nth-child(3n)     { border-right:  2px solid #2a3088; }
+.sdk-cell:nth-child(9n)     { border-right:  1px solid #1a1a3a; }
+.sdk-cell:nth-child(n+19):nth-child(-n+27),
+.sdk-cell:nth-child(n+46):nth-child(-n+54) { border-bottom: 2px solid #2a3088; }
+
+.sdk-cell.given   { color: var(--cyan); font-weight: bold; cursor: default; background: #04040e; }
+.sdk-cell.selected { background: #001929 !important; outline: 2px solid var(--yellow); z-index: 2; }
+.sdk-cell.hl      { background: #090920; }
+.sdk-cell.error   { color: var(--red) !important; background: #160010 !important; }
+
+@keyframes correctFlash {
+  0%  { background: #002a1a; }
+  50% { background: #00442e; }
+  100%{ background: var(--surface); }
+}
+.sdk-cell.flash { animation: correctFlash .45s ease; }
+
+/* Notes sub-grid */
+.sdk-cell.notes-mode {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 2px;
+  align-items: center;
+}
+.note-d {
+  display: flex; align-items: center; justify-content: center;
+  font-size: clamp(4px, 1vw, 7px);
+  color: #5566aa; line-height: 1;
+}
+
+/* Numpad */
+.numpad {
+  display: flex; justify-content: center;
+  gap: 7px; flex-wrap: wrap; margin-bottom: 16px;
+}
+.num-btn {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 13px;
+  width: 44px; height: 44px;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  color: var(--text); cursor: pointer;
+  transition: all .15s;
+  display: flex; align-items: center; justify-content: center;
+}
+.num-btn:hover { border-color: var(--cyan); color: var(--cyan); box-shadow: var(--glow-cyan); transform: scale(1.08); }
+.num-btn.erase { font-size: 8px; width: 56px; border-color: var(--red); color: var(--red); }
+.num-btn.erase:hover { background: var(--red); color: var(--bg); box-shadow: var(--glow-red); }
+
+/* Action row */
+.sdk-actions {
+  display: flex; gap: 8px; justify-content: center;
+  flex-wrap: wrap; margin-bottom: 16px;
+}
+
+/* Status */
+.sdk-status {
+  text-align: center;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 11px;
+  min-height: 24px;
+  color: var(--green);
+  text-shadow: var(--glow-green);
+}
