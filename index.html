@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARCADE HUB</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+header {
+  text-align: center;
+  padding: 56px 20px 12px;
+}
+.logo {
+  font-family: 'Press Start 2P', monospace;
+  font-size: clamp(20px, 5vw, 44px);
+  color: var(--cyan);
+  text-shadow: 0 0 30px var(--cyan), 0 0 70px #00f5ff66;
+  letter-spacing: 6px;
+  animation: flicker 5s infinite;
+}
+.logo span { color: var(--magenta); text-shadow: 0 0 30px var(--magenta); }
+.tagline {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 4px;
+}
+
+.insert-coin {
+  text-align: center;
+  margin-top: 6px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  color: var(--yellow);
+  text-shadow: var(--glow-yellow);
+  animation: blink 1.2s infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  max-width: 900px;
+  margin: 48px auto 80px;
+  padding: 0 24px;
+}
+
+.game-tile {
+  display: block;
+  text-decoration: none;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 32px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all .25s;
+  position: relative;
+  overflow: hidden;
+  animation: fadeIn .4s ease both;
+}
+.game-tile:nth-child(1){animation-delay:.05s}
+.game-tile:nth-child(2){animation-delay:.12s}
+.game-tile:nth-child(3){animation-delay:.19s}
+.game-tile:nth-child(4){animation-delay:.26s}
+
+.game-tile::before {
+  content: '';
+  position: absolute; top:0;left:0;right:0;height:3px;
+  transition: opacity .25s;
+}
+.game-tile:nth-child(1)::before { background: linear-gradient(90deg,var(--cyan),var(--magenta)); }
+.game-tile:nth-child(2)::before { background: linear-gradient(90deg,var(--magenta),var(--yellow)); }
+.game-tile:nth-child(3)::before { background: linear-gradient(90deg,var(--yellow),var(--cyan)); }
+.game-tile:nth-child(4)::before { background: linear-gradient(90deg,var(--green),var(--cyan)); }
+
+.game-tile:hover { transform: translateY(-6px); }
+.game-tile:nth-child(1):hover { border-color:var(--cyan); box-shadow:var(--glow-cyan); }
+.game-tile:nth-child(2):hover { border-color:var(--magenta); box-shadow:var(--glow-mag); }
+.game-tile:nth-child(3):hover { border-color:var(--yellow); box-shadow:var(--glow-yellow); }
+.game-tile:nth-child(4):hover { border-color:var(--green); box-shadow:var(--glow-green); }
+
+.tile-emoji { font-size: 56px; display:block; margin-bottom:16px; line-height:1; }
+.tile-name {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  color: var(--text);
+}
+.tile-desc { font-size: 10px; color: var(--muted); line-height: 1.7; }
+
+.tile-badge {
+  position:absolute; top:14px; right:12px;
+  font-family:'Press Start 2P',monospace; font-size:6px;
+  padding:3px 7px;
+  border:1px solid; border-radius:2px;
+}
+.badge-new { color:var(--green); border-color:var(--green); }
+
+footer {
+  text-align: center;
+  padding: 0 20px 40px;
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 2px;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">ARCADE <span>HUB</span></div>
+  <div class="tagline">4 GAMES · RETRO ARCADE COLLECTION</div>
+  <div class="insert-coin">— INSERT COIN —</div>
+</header>
+
+<div class="games-grid">
+
+  <a class="game-tile" href="rps.html">
+    <span class="tile-emoji">✊</span>
+    <div class="tile-name">ROCK PAPER SCISSORS</div>
+    <div class="tile-desc">Beat the CPU. Track your streak. Who blinks first?</div>
+  </a>
+
+  <a class="game-tile" href="sudoku.html">
+    <span class="tile-emoji">🔢</span>
+    <div class="tile-name">SUDOKU</div>
+    <div class="tile-desc">3 difficulties. Notes mode. Timer only starts when you play.</div>
+  </a>
+
+  <a class="game-tile" href="space.html">
+    <span class="tile-emoji">🚀</span>
+    <div class="tile-name">SPACE WAVES</div>
+    <div class="tile-desc">Shoot alien waves before they reach the ground.</div>
+  </a>
+
+  <a class="game-tile" href="snake.html">
+    <span class="tile-emoji">🐍</span>
+    <div class="tile-name">SNAKE</div>
+    <div class="tile-name" style="font-size:7px;color:var(--muted);margin-top:4px">CLASSIC REBORN</div>
+    <div class="tile-desc">Eat. Grow. Don't bite yourself. Speed increases.</div>
+    <div class="tile-badge badge-new">NEW</div>
+  </a>
+
+</div>
+
+<footer>© ARCADE HUB · By BOAZ P · ALL GAMES PLAYABLE IN BROWSER</footer>
+
+</body>
+</html>
